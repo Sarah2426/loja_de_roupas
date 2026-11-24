@@ -1,4 +1,7 @@
-int tamanho;
+import 'produto.dart';
+
+class Calcado extends Produto {
+  int tamanho;
   String tipo;
   bool _impermeavel;
 
@@ -18,4 +21,4 @@ int tamanho;
   bool adequadoParaChuva() {
     return _impermeavel;
   }
-}
+} 
