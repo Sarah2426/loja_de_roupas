@@ -15,10 +15,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Loja de Moda',
+      title: 'Sistema de Loja',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
       home: const ListaProdutosPage(),
@@ -34,15 +34,33 @@ class ListaProdutosPage extends StatelessWidget {
     final List<Produto> produtos = [
       Roupa(
         id: 1,
-        nome: 'Camiseta Básica',
-        preco: 59.90,
-        estoque: 30,
+        nome: 'Camiseta',
+        preco: 49.90,
+        estoque: 10,
         tamanho: 'M',
-        cor: 'Preta',
+        cor: 'Preto',
         tecido: 'Algodão',
       ),
-      Roupa(
+      Calcado(
         id: 2,
+        nome: 'Tênis',
+        preco: 150.00,
+        estoque: 8,
+        tamanho: 38,
+        tipo: 'Esportivo',
+        impermeavel: true,
+      ),
+      Acessorio(
+        id: 3,
+        nome: 'Colar',
+        preco: 35.00,
+        estoque: 12,
+        tipo: 'Bijuteria',
+        material: 'Aço',
+        personalizavel: true,
+      ),
+      Roupa(
+        id: 4,
         nome: 'Calça Jeans',
         preco: 149.90,
         estoque: 15,
@@ -52,15 +70,7 @@ class ListaProdutosPage extends StatelessWidget {
         tecido: 'Jeans',
       ),
       Calcado(
-        id: 3,
-        nome: 'Tênis Esportivo',
-        preco: 299.90,
-        estoque: 8,
-        tamanho: 41,
-        tipo: 'Tênis',
-      ),
-      Calcado(
-        id: 4,
+        id: 5,
         nome: 'Bota de Chuva',
         preco: 119.90,
         estoque: 12,
@@ -69,38 +79,31 @@ class ListaProdutosPage extends StatelessWidget {
         impermeavel: true,
       ),
       Acessorio(
-        id: 5,
+        id: 6,
         nome: 'Cinto de Couro',
         preco: 79.90,
         estoque: 20,
         tipo: 'Cinto',
         material: 'Couro',
       ),
-      Acessorio(
-        id: 6,
-        nome: 'Boné Personalizado',
-        preco: 49.90,
-        estoque: 25,
-        tipo: 'Boné',
-        material: 'Poliéster',
-        personalizavel: true,
-      ),
     ];
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Loja de Moda'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: const Text('Sistema de Loja'),
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
       ),
       body: ListView.builder(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(12),
         itemCount: produtos.length,
         itemBuilder: (context, index) {
           final produto = produtos[index];
 
           return Card(
+            margin: const EdgeInsets.only(bottom: 12),
             child: ListTile(
-              leading: CircleAvatar(child: Icon(_icone(produto))),
+              leading: Icon(_icone(produto), size: 35),
               title: Text(produto.nome),
               subtitle: Text(
                 '${_detalhes(produto)}\n'
@@ -142,4 +145,4 @@ class ListaProdutosPage extends StatelessWidget {
     }
     return produto.descricao ?? '';
   }
-}
+} 
