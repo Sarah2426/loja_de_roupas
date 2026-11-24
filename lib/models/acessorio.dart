@@ -1,4 +1,7 @@
- String tipo;
+import 'produto.dart';
+
+class Acessorio extends Produto {
+  String tipo;
   String material;
   bool _personalizavel;
 
